@@ -1,4 +1,4 @@
-## Backend
+# Backend
 
 Iniciando o servidor em modo de desenvolvimento:
 
@@ -11,5 +11,5 @@ Iniciando o servidor em produção:
 
 ```
 > npm install
-> npm run start
+> npm start
 ```
