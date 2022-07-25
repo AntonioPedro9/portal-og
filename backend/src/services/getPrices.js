@@ -17,9 +17,11 @@ module.exports = {
       const worksheet = workbook.Sheets["Calculo Vmware HCI"];
 
       const vmPrices = {
-        memory_price: worksheet["E19"]["v"] / 2,
-        cpu_price: worksheet["E20"]["v"] / 2,
-        storage_price: worksheet["B15"]["v"] * 2,
+        memory_capex: worksheet["E19"]["v"] / 2,
+        cpu_capex: worksheet["E20"]["v"] / 2,
+        storage_capex: worksheet["B15"]["v"] * 2,
+        memory_opex: worksheet["E23"]["v"] / 2,
+        cpu_opex: worksheet["E24"]["v"] / 2,
       };
 
       return response.status(200).json(vmPrices);
@@ -44,9 +46,11 @@ module.exports = {
       const worksheet = workbook.Sheets["Calculo Container"];
 
       const containerPrices = {
-        memory_price: worksheet["E17"]["v"] / 2,
-        cpu_price: worksheet["E18"]["v"] / 2,
-        storage_price: worksheet["B13"]["v"] * 2,
+        memory_capex: worksheet["E17"]["v"] / 2,
+        cpu_capex: worksheet["E18"]["v"] / 2,
+        storage_capex: worksheet["B13"]["v"] * 2,
+        memory_opex: worksheet["E21"]["v"] / 2,
+        cpu_opex: worksheet["E22"]["v"] / 2,
       };
 
       return response.status(200).json(containerPrices);

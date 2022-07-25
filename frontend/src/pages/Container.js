@@ -11,48 +11,53 @@ export default function Container() {
   const [storageAmount, setStorageAmount] = useState("");
   const [machineAmount, setMachineAmount] = useState(1);
 
-  const [memoryPrice, setMemoryPrice] = useState(0);
-  const [cpuPrice, setCpuPrice] = useState(0);
-  const [storagePrice, setStoragePrice] = useState(0);
+  const [memoryCapex, setMemoryCapex] = useState(0);
+  const [cpuCapex, setCpuCapex] = useState(0);
+  const [storageCapex, setStorageCapex] = useState(0);
+  const [memoryOpex, setMemoryOpex] = useState(0);
+  const [cpuOpex, setCpuOpex] = useState(0);
 
-  const [budget, setBudget] = useState(0);
   const [capex, setCapex] = useState(0);
   const [opex, setOpex] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
-  const [table, setTable] = useState([["Preço", "Memória (GB)", "CPU", "Armazenamento (GB)", "Quantidade"]]);
+  const [table, setTable] = useState([["Capex", "Opex", "Memória (GB)", "CPU", "Armazenamento (GB)", "Quantidade"]]);
 
   /**
    * Puxa pela API os valores para fazer o orçamento de um container
    */
   useEffect(() => {
-    api.get("/getPrices/container").then((response) => {
-      const prices = response.data;
+    api
+      .get("/getPrices/container")
+      .then((response) => {
+        const prices = response.data;
 
-      if (prices) {
-        setMemoryPrice(prices.memory_price);
-        setCpuPrice(prices.cpu_price);
-        setStoragePrice(prices.storage_price);
-      } else {
+        setMemoryCapex(prices.memory_capex);
+        setCpuCapex(prices.cpu_capex);
+        setStorageCapex(prices.storage_capex);
+        setMemoryOpex(prices.memory_opex);
+        setCpuOpex(prices.cpu_opex);
+      })
+      .catch(() => {
         alert("Servidor fora do ar.");
-      }
-    });
+      });
   }, []);
 
   /**
    * Faz o orçamento toda vez que a memória, CPU, armazenamneto ou quantidade de máquinas é alterada
    */
   useEffect(() => {
-    setBudget((memoryPrice * memoryAmount + cpuPrice * cpuAmount + storagePrice * storageAmount) * machineAmount);
+    setCapex((memoryCapex * memoryAmount + cpuCapex * cpuAmount + storageCapex * storageAmount) * machineAmount);
+    setOpex((memoryOpex * memoryAmount + cpuOpex * cpuAmount) * machineAmount);
   }, [memoryAmount, cpuAmount, storageAmount, machineAmount]);
 
   /**
    * Adiciona as inforamções do container na tabela e atualiza o preço total
    */
   function addContainerToTable() {
-    const newRow = [formatCurrency(budget), memoryAmount, cpuAmount, storageAmount, machineAmount];
+    const newRow = [formatCurrency(capex), formatCurrency(opex), memoryAmount, cpuAmount, storageAmount, machineAmount];
 
     setTable([...table, newRow]);
-    setTotalPrice(totalPrice + budget);
+    setTotalPrice(totalPrice + capex);
     setMemoryAmount("");
     setCpuAmount("");
     setStorageAmount("");
@@ -101,7 +106,11 @@ export default function Container() {
             </Button>
 
             <Alert variant="warning">
-              <strong>Valor total:</strong> {formatCurrency(budget)}
+              <strong>Capex:</strong> {formatCurrency(capex)}
+              <br />
+              <strong>Opex:</strong> {formatCurrency(opex)}
+              <br />
+              <strong>Preço total:</strong> {formatCurrency(capex + opex)}
             </Alert>
 
             <Button variant="primary" type="submit" style={{ width: "100%" }}>
