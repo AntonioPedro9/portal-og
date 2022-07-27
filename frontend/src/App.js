@@ -9,35 +9,13 @@ import Container from "./pages/Container.js";
 export default function App() {
   return (
     <>
+      <NavBar />
+
       <Router>
         <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <NavBar />
-                <Home />
-              </>
-            }
-          />
-          <Route
-            path="/vm"
-            element={
-              <>
-                <NavBar />
-                <VM />
-              </>
-            }
-          />
-          <Route
-            path="/container"
-            element={
-              <>
-                <NavBar />
-                <Container />
-              </>
-            }
-          />
+          <Route path="/" element={<Home />} />
+          <Route path="/vm" element={<VM />} />
+          <Route path="/container" element={<Container />} />
         </Routes>
       </Router>
     </>
