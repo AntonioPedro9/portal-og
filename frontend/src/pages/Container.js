@@ -108,9 +108,9 @@ export default function Container() {
             </Button>
 
             <Alert variant="warning">
-              <strong>Capex:</strong> {formatCurrency(capex)}
+              <strong>CAPEX:</strong> {formatCurrency(capex)}
               <br />
-              <strong>Opex:</strong> {formatCurrency(opex)}
+              <strong>OPEX:</strong> {formatCurrency(opex)}
               <br />
               <strong>Preço total:</strong> {formatCurrency(capex + opex)}
             </Alert>
