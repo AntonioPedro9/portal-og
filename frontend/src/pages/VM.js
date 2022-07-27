@@ -19,8 +19,9 @@ export default function VM() {
 
   const [capex, setCapex] = useState(0);
   const [opex, setOpex] = useState(0);
-  const [totalPrice, setTotalPrice] = useState(0);
-  const [table, setTable] = useState([["Capex", "Opex", "Memória (GB)", "CPU", "Armazenamento (GB)", "Quantidade"]]);
+  const [totalCapex, setTotalCapex] = useState(0);
+  const [totalOpex, setTotalOpex] = useState(0);
+  const [table, setTable] = useState([["CAPEX", "OPEX", "Memória (GB)", "CPU", "Armazenamento (GB)", "Quantidade"]]);
 
   /**
    * Puxa pela API os valores para fazer o orçamento de uma VM
@@ -57,7 +58,8 @@ export default function VM() {
     const newRow = [formatCurrency(capex), formatCurrency(opex), memoryAmount, cpuAmount, storageAmount, machineAmount];
 
     setTable([...table, newRow]);
-    setTotalPrice(totalPrice + capex);
+    setTotalCapex(totalCapex + capex);
+    setTotalOpex(totalOpex + opex);
     setMemoryAmount("");
     setCpuAmount("");
     setStorageAmount("");
@@ -71,7 +73,7 @@ export default function VM() {
    */
   async function handleSubmit(event) {
     event.preventDefault();
-    generatePdf(table, formatCurrency(totalPrice));
+    generatePdf(table, formatCurrency(totalCapex), formatCurrency(totalOpex));
   }
 
   return (

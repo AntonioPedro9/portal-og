@@ -1,41 +1,27 @@
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 
+import getTodaysDate from "../utils/getTodaysDate";
+import getExpirationDate from "../utils/getExpirationDate";
+
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 /**
- * Recebe a fila de compra e o preço final para gerar o PDF
+ * Recebe a fila de compra e o preço final CAPEX e OPEX para gerar o PDF
  *
  * @param {array} table
- * @param {string} totalPrice
+ * @param {string} totalCapex
+ * @param {string} totalOpex
  */
-export default function generatePdf(table, totalPrice) {
-  /**
-   * Pega a data atual e a data de validade
-   */
-  let date = new Date();
-  let day = date.getDay();
-  let month = date.getMonth();
-  let expirationMonth = date.getMonth() + 1;
-  let year = date.getFullYear();
-
-  /**
-   * Faz a formatação da data
-   */
-  if (day < 10) day = "0" + day;
-  if (month < 10) month = "0" + month;
-  if (expirationMonth < 10) expirationMonth = "0" + expirationMonth;
-
-  /**
-   * Define a estrutura e estilização do PDF
-   */
+export default function generatePdf(table, totalCapex, totalOpex) {
   const docDefinitios = {
     content: [
       { text: "Orçamento", style: "header" },
 
-      `Data da simulação: ${day}/${month}/${year}`,
-      `Validade da simulação: ${day}/${expirationMonth}/${year}`,
-      `Valor total: R$ ${totalPrice}`,
+      `Data da simulação: ${getTodaysDate()}`,
+      `Validade da simulação: ${getExpirationDate()}`,
+      `Valor total CAPEX: R$ ${totalCapex}`,
+      `Valor total OPEX: R$ ${totalOpex}`,
 
       {
         style: "table",
