@@ -4,7 +4,7 @@ export default function getExpirationDate() {
    */
   let date = new Date();
   let day = date.getDate();
-  let expirationMonth = date.getMonth() + 1;
+  let expirationMonth = date.getMonth() + 2;
   let year = date.getFullYear();
 
   /**
