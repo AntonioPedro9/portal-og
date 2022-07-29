@@ -73,7 +73,7 @@ export default function VM() {
    */
   async function handleSubmit(event) {
     event.preventDefault();
-    generatePdf(table, formatCurrency(totalCapex), formatCurrency(totalOpex));
+    generatePdf(table, totalCapex, totalOpex);
   }
 
   return (
@@ -104,7 +104,7 @@ export default function VM() {
             </Form.Group>
 
             <Button variant="secondary" style={{ width: "100%" }} className="mb-3" onClick={addVmToTable}>
-              Adicionar a fila
+              Adicionar ao Orçamento
             </Button>
 
             <Alert variant="warning">
@@ -112,11 +112,11 @@ export default function VM() {
               <br />
               <strong>OPEX:</strong> {formatCurrency(opex)}
               <br />
-              <strong>Preço total:</strong> {formatCurrency(capex + opex)}
+              <strong>Preço Total:</strong> {formatCurrency(capex + opex)}
             </Alert>
 
             <Button variant="primary" type="submit" style={{ width: "100%" }}>
-              Finalizar e gerar PDF
+              Finalizar e Gerar PDF
             </Button>
           </Form>
         </Card.Body>

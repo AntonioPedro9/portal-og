@@ -71,9 +71,9 @@ export default function Container() {
   /**
    * Envia a tabela e o preço total para a função de gerar PDF
    */
-  async function handleSubmit(event) {
+  function handleSubmit(event) {
     event.preventDefault();
-    generatePdf(table, formatCurrency(totalCapex), formatCurrency(totalOpex));
+    generatePdf(table, totalCapex, totalOpex);
   }
 
   return (
@@ -104,7 +104,7 @@ export default function Container() {
             </Form.Group>
 
             <Button variant="secondary" style={{ width: "100%" }} className="mb-3" onClick={addContainerToTable}>
-              Adicionar a fila
+              Adicionar ao Orçamento
             </Button>
 
             <Alert variant="warning">
@@ -116,7 +116,7 @@ export default function Container() {
             </Alert>
 
             <Button variant="primary" type="submit" style={{ width: "100%" }}>
-              Finalizar e gerar PDF
+              Finalizar e Gerar PDF
             </Button>
           </Form>
         </Card.Body>
