@@ -7,7 +7,8 @@ export default function NavBar() {
     <Navbar bg="dark" variant="dark" className="mb-3">
       <Container>
         <Navbar.Brand href="/">
-          <img alt="Logo" src={logo} width="30" height="30" className="d-inline-block align-top" /> Portal OG
+          <img alt="Logo" src={logo} width="30" height="30" className="d-inline-block align-top" />
+          Portal OG - Algar Telecom
         </Navbar.Brand>
       </Container>
     </Navbar>

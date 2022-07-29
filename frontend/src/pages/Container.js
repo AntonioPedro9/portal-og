@@ -80,7 +80,7 @@ export default function Container() {
     <div className="container">
       <Card className="m-3" style={{ width: "18rem" }}>
         <Card.Body>
-          <Card.Title>Orçamento container</Card.Title>
+          <Card.Title>Orçamento Container</Card.Title>
 
           <Form onSubmit={handleSubmit}>
             <Form.Group className="my-3">
@@ -112,7 +112,7 @@ export default function Container() {
               <br />
               <strong>OPEX:</strong> {formatCurrency(opex)}
               <br />
-              <strong>Preço total:</strong> {formatCurrency(capex + opex)}
+              <strong>Preço Total:</strong> {formatCurrency(capex + opex)}
             </Alert>
 
             <Button variant="primary" type="submit" style={{ width: "100%" }}>
