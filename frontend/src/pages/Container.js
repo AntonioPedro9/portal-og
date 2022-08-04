@@ -73,7 +73,11 @@ export default function Container() {
    */
   function handleSubmit(event) {
     event.preventDefault();
+
     generatePdf(table, totalCapex, totalOpex);
+
+    // Limpa a fila de compra
+    setTable([["CAPEX", "OPEX", "Memória (GB)", "CPU", "Armazenamento (GB)", "Quantidade"]]);
   }
 
   return (
