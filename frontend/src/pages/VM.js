@@ -71,13 +71,17 @@ export default function VM() {
   /**
    * Envia a tabela e o preço total para a função de gerar PDF
    */
-  async function handleSubmit(event) {
+  function handleSubmit(event) {
     event.preventDefault();
 
     generatePdf(table, totalCapex, totalOpex);
 
-    // Limpa a fila de compra
+    // Limpa a fila de compra, CAPEX e OPEX
     setTable([["CAPEX", "OPEX", "Memória (GB)", "CPU", "Armazenamento (GB)", "Quantidade"]]);
+    setCapex(0);
+    setTotalCapex(0);
+    setOpex(0);
+    setTotalOpex(0);
   }
 
   return (

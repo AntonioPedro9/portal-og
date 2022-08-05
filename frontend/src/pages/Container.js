@@ -76,8 +76,12 @@ export default function Container() {
 
     generatePdf(table, totalCapex, totalOpex);
 
-    // Limpa a fila de compra
+    // Limpa a fila de compra, CAPEX e OPEX
     setTable([["CAPEX", "OPEX", "Memória (GB)", "CPU", "Armazenamento (GB)", "Quantidade"]]);
+    setCapex(0);
+    setTotalCapex(0);
+    setOpex(0);
+    setTotalOpex(0);
   }
 
   return (
