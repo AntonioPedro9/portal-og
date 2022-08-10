@@ -39,7 +39,7 @@ export default function VM() {
         setCpuOpex(prices.cpu_opex);
       })
       .catch(() => {
-        alert("Servidor fora do ar.");
+        alert("Servidor Fora do Ar.");
       });
   }, []);
 
@@ -65,7 +65,7 @@ export default function VM() {
     setStorageAmount("");
     setMachineAmount(1);
 
-    alert("VM adicionada a fila de compra.");
+    alert("VM Adicionada ao Orçamento.");
   }
 
   /**
@@ -76,7 +76,7 @@ export default function VM() {
 
     generatePdf(table, totalCapex, totalOpex);
 
-    // Limpa a fila de compra, CAPEX e OPEX
+    // Limpa a fila de compra e os valores de CAPEX e OPEX
     setTable([["CAPEX", "OPEX", "Memória (GB)", "CPU", "Armazenamento (GB)", "Quantidade"]]);
     setCapex(0);
     setTotalCapex(0);
@@ -92,22 +92,22 @@ export default function VM() {
 
           <Form onSubmit={handleSubmit}>
             <Form.Group className="my-3">
-              <Form.Label>Memória RAM (GB)</Form.Label>
+              <Form.Label>Memória RAM (GB):</Form.Label>
               <Form.Control type="number" value={memoryAmount} onChange={(e) => setMemoryAmount(e.target.value)} />
             </Form.Group>
 
             <Form.Group className="mb-3">
-              <Form.Label>Quantidade de CPUs</Form.Label>
+              <Form.Label>Quantidade de CPUs:</Form.Label>
               <Form.Control type="number" value={cpuAmount} onChange={(e) => setCpuAmount(e.target.value)} />
             </Form.Group>
 
             <Form.Group className="mb-3">
-              <Form.Label>Armazenamento (GB)</Form.Label>
+              <Form.Label>Armazenamento (GB):</Form.Label>
               <Form.Control type="number" value={storageAmount} onChange={(e) => setStorageAmount(e.target.value)} />
             </Form.Group>
 
             <Form.Group className="mb-3">
-              <Form.Label>Número de máquinas</Form.Label>
+              <Form.Label>Número de Máquinas:</Form.Label>
               <Form.Control type="number" value={machineAmount} onChange={(e) => setMachineAmount(e.target.value)} />
             </Form.Group>
 

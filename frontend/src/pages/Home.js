@@ -8,11 +8,11 @@ export default function Home() {
         <Card.Body>
           <Card.Title>Orçamento</Card.Title>
 
-          <Card.Text>Faça uma simulação de um orçamento para gerar seu PDF.</Card.Text>
+          <Card.Text>Faça sua cotação para VM ou Container  e exporte em PDF. </Card.Text>
 
           <Dropdown>
             <Dropdown.Toggle variant="primary" id="dropdown-basic">
-              Simular orçamento
+              Simular Orçamento
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
@@ -27,7 +27,7 @@ export default function Home() {
         <Card.Body>
           <Card.Title>Solicitação</Card.Title>
 
-          <Card.Text>Anexe o PDF gerado no Jira para concluir sua solicitação.</Card.Text>
+          <Card.Text>Anexe o PDF da cotação no Jira para concluir sua solicitação.</Card.Text>
 
           <a href="https://jira.algartelecom.com.br:8443/secure/Dashboard.jspa" target="blank">
             <Button variant="primary">Navegar até o Jira</Button>
