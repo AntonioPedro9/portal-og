@@ -6,21 +6,26 @@ import generatePdf from "../services/generatePdf";
 import formatCurrency from "../utils/formatCurrency";
 
 export default function VM() {
+  // Configurações da máquina
   const [memoryAmount, setMemoryAmount] = useState("");
   const [cpuAmount, setCpuAmount] = useState("");
   const [storageAmount, setStorageAmount] = useState("");
   const [machineAmount, setMachineAmount] = useState(1);
 
+  // Preço das configurações da máquina
   const [memoryCapex, setMemoryCapex] = useState(0);
   const [cpuCapex, setCpuCapex] = useState(0);
   const [storageCapex, setStorageCapex] = useState(0);
   const [memoryOpex, setMemoryOpex] = useState(0);
   const [cpuOpex, setCpuOpex] = useState(0);
 
+  // Valores de CAPEX e OPEX
   const [capex, setCapex] = useState(0);
   const [opex, setOpex] = useState(0);
   const [totalCapex, setTotalCapex] = useState(0);
   const [totalOpex, setTotalOpex] = useState(0);
+
+  // Fila de compra que será usada no PDF
   const [table, setTable] = useState([["CAPEX", "OPEX", "Memória (GB)", "CPU", "Armazenamento (GB)", "Quantidade"]]);
 
   /**
