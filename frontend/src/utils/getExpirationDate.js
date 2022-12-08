@@ -8,6 +8,14 @@ export default function getExpirationDate() {
   let year = date.getFullYear();
 
   /**
+   * Verifica se o mês é maior que 12
+   */
+  if (expirationMonth > 12) {
+    expirationMonth = expirationMonth - 12;
+    year = year + 1;
+  }
+
+  /**
    * Faz a formatação da data
    */
   if (day < 10) day = "0" + day;
