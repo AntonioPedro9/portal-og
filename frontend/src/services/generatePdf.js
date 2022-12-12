@@ -21,9 +21,9 @@ export default function generatePdf(table, totalCapex, totalOpex) {
 
       `Data da Simulação: ${getTodaysDate()}`,
       `Validade da Simulação: ${getExpirationDate()}`,
-      `Valor CAPEX: R$ ${formatCurrency(totalCapex)}`,
-      `Valor OPEX: R$ ${formatCurrency(totalOpex)}`,
-      `Valor Total: R$ ${formatCurrency(totalCapex + totalOpex)}`,
+      `Valor CAPEX: ${formatCurrency(totalCapex)}`,
+      `Valor OPEX: ${formatCurrency(totalOpex)}`,
+      `Valor Total: ${formatCurrency(totalCapex + totalOpex)}`,
 
       {
         style: "table",
